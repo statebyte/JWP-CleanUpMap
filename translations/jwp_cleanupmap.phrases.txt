@@ -12,4 +12,11 @@
         "en" "{BLUE}{1}{DEFAULT}: refresh and cleared the map..."
         "ru" "{BLUE}{1}{DEFAULT}: перезапустил и очистил карту..."
     }
+
+    "CHAT_MSG_FAILED"
+    {
+        "#format" "{1:i},{2:i}"
+        "en" "> Unable to activate [{1} / {2} used]"
+        "ru" "> Не возможно активировать [ {1}/{2} использовано ]"
+    }
 }
