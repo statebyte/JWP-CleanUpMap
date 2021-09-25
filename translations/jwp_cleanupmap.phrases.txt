@@ -1,0 +1,15 @@
+"Phrases"
+{
+    "MENU_TITLE"
+    {
+        "en" "Refresh and clear map"
+        "ru" "Перезапустить и очистить карту"
+    }
+
+    "CHAT_MSG"
+    {
+        "#format" "{1:N}"
+        "en" "{BLUE}{1}{DEFAULT}: refresh and cleared the map..."
+        "ru" "{BLUE}{1}{DEFAULT}: перезапустил и очистил карту..."
+    }
+}
