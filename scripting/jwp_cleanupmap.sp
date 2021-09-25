@@ -6,10 +6,10 @@
 #define DEBUG 0
 #define FUNC "cleanupmap"
 
-ConVar g_hCounter;
-Handle hCleanUpMap;
-int g_iMaxResetCount = -1,
-	g_iCurrentResetCount = 0;
+ConVar 	g_hCounter;
+Handle 	hCleanUpMap;
+int 	g_iMaxResetCount = -1,
+		g_iCurrentResetCount = 0;
 
 public Plugin myinfo =
 {
@@ -76,17 +76,8 @@ public void Event_OnRoundStart(Event event, const char[] name, bool dontBroadcas
 
 public bool DisplayCallBack(int iClient, char[] buffer, int maxlength, int style)
 {
-	PrintToChatAll("%i", g_iMaxResetCount);
-	PrintToChatAll("%i", maxlength);
-	SetGlobalTransTarget(iClient);
-
-	if(g_iMaxResetCount != -1)
-	{
-		PrintToChatAll("GG");
-		FormatEx(buffer, maxlength, "%t [%i/%i]", "MENU_TITLE", g_iCurrentResetCount, g_iMaxResetCount);
-		style = (g_iCurrentResetCount <= g_iMaxResetCount) ? ITEMDRAW_DEFAULT : ITEMDRAW_DISABLED;
-	}
-	else FormatEx(buffer, maxlength, "%t", "MENU_TITLE");
+	GetTitle(buffer, maxlength);
+	style = (g_iCurrentResetCount <= g_iMaxResetCount) ? ITEMDRAW_DEFAULT : ITEMDRAW_DISABLED;
 
 	return true;
 }
@@ -109,6 +100,16 @@ public bool SelectCallBack(int iClient)
 	JWP_ShowMainMenu(iClient);
 	
 	return true;
+}
+
+void GetTitle(char[] sBuffer, int iMaxLen)
+{
+	if(g_iMaxResetCount != -1)
+	{
+		PrintToChatAll("GG");
+		FormatEx(sBuffer, iMaxLen, "%t [%i/%i]", "MENU_TITLE", g_iCurrentResetCount, g_iMaxResetCount);
+	}
+	else FormatEx(sBuffer, iMaxLen, "%t", "MENU_TITLE");
 }
 
 Action cmd_cum(int iClient, int iArgs)
